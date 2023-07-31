@@ -86,7 +86,6 @@ def render(app,data):
         data["vehicle1_values"] = vehicle1_values[::-1]
         data["vehicle2_values"] = vehicle2_values[::-1]
         
-
         fig1 = px.bar(
             data,
             y="comp_elem",
