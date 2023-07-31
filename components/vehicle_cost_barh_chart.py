@@ -83,6 +83,9 @@ def render(app,data):
         data["vehicle1"] = vehicle1_normalized[::-1]
         data["vehicle1-"] = -data["vehicle1"]
         data["vehicle2"] = vehicle2_normalized[::-1]
+        data["vehicle1_values"] = vehicle1_values[::-1]
+        data["vehicle2_values"] = vehicle2_values[::-1]
+        
 
         fig1 = px.bar(
             data,
@@ -91,7 +94,8 @@ def render(app,data):
             orientation="h",
             color="vehicle1",
             color_continuous_scale="Greys",
-            opacity=0.8
+            opacity=0.8,
+            hover_data={"vehicle1_values"}
         )
         fig2 = px.bar(
             data,
@@ -100,9 +104,9 @@ def render(app,data):
             orientation="h",
             color="vehicle2",
             # color_continuous_scale="Greys",
-            opacity=0.8
+            opacity=0.8,
+            hover_data={"vehicle2_values"}
         )
-        
         fig = fig1.add_traces(fig2.data)
         fig.update_layout(
             title="Side by side comparison",
@@ -111,10 +115,9 @@ def render(app,data):
             plot_bgcolor='white',
             coloraxis_showscale=False,
         )
-        # fig.update_traces(
-        #     hovertemplate="%{vehicle1}"
-        # )
-
+        fig.update_traces(
+            hovertemplate="%{customdata[0]}"
+        )
         return html.Div(dcc.Graph(figure=fig), id="bar_h_chart")
     return html.Div(id=VEHICLE_COST_BARH_CHART)
 
