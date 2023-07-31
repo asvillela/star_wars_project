@@ -110,9 +110,10 @@ def render(app,data):
         fig.update_layout(
             title="Side by side comparison",
             yaxis_title="Comparison Elements",
-            xaxis_title="",
+            # xaxis_title="",
             plot_bgcolor='white',
             coloraxis_showscale=False,
+            xaxis_showticklabels=False,
         )
         fig.update_traces(
             hovertemplate="%{customdata[0]}"
