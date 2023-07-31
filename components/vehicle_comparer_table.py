@@ -40,8 +40,8 @@ def render(app,data):
         if filtered_data.shape[0]==0:
             return html.Div("No Data Selected", id=VEHICLE_COMPARISON_TABLE)
         vehicle_comparer_table = filtered_data[['name', 'manufacturer', 'cost_in_credits', 'max_atmosphering_speed', 'cargo_capacity', 'hyperdrive_rating', 'length', 'crew', 'passengers']].set_index("name").T
-        vehicle_comparer_table.index.set_names("", inplace=True)
         vehicle_comparer_table.index = ['Manufacturer', 'Cost in credits', 'Speed in atmosphere', 'Cargo capacity', 'Hyperdrive Rating', 'Length', 'Crew capacity', 'Passengers capacity']
+        vehicle_comparer_table.index.set_names("", inplace=True)
         return html.Div(
             [
                 html.H6("Vehicle comparer table"),
