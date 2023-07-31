@@ -13,7 +13,7 @@ def render(app, data):
     df_vehicles["vehicle_class"] = df_vehicles["vehicle_class"].str.capitalize()
     df_vehicles.drop_duplicates(subset="name", keep='first', inplace=True)
 
-    all_vehicle_class = df_vehicles["vehicle_class"].unique()
+    all_vehicle_class = df_vehicles.sort_values(by="vehicle_class")["vehicle_class"].unique()
     vehicle_class_list = [{"label": vehicle_class, "value": vehicle_class} for vehicle_class in all_vehicle_class]
     return html.Div(
         [
@@ -22,7 +22,7 @@ def render(app, data):
                 options=vehicle_class_list,
                 placeholder="Choose vehicle class",
                 value="Speeder",
-                multi=False,
+                multi=True,
                 className="mb-3",
                 id=DROPDOWN_VEHICLE_CLASS
             )

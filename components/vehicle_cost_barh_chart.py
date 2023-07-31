@@ -109,8 +109,11 @@ def render(app,data):
             yaxis_title="Comparison Elements",
             xaxis_title="",
             plot_bgcolor='white',
-            coloraxis_showscale=False
+            coloraxis_showscale=False,
         )
+        # fig.update_traces(
+        #     hovertemplate="%{vehicle1}"
+        # )
 
         return html.Div(dcc.Graph(figure=fig), id="bar_h_chart")
     return html.Div(id=VEHICLE_COST_BARH_CHART)

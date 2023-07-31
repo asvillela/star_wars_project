@@ -14,7 +14,7 @@ data = get_data(PATH_characters, PATH_planets, PATH_species, PATH_starships, PAT
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.COSMO])
 app.layout = create_layout(app, data)
-server = app.server
+# server = app.server
 
 if __name__ == "__main__":
     app.run_server(debug=True)

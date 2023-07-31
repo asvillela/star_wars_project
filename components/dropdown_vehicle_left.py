@@ -10,6 +10,7 @@ def render(app, data):
     df_vehicles["vehicle_class"] = df_vehicles["vehicle_class"].str.capitalize()
     df_vehicles["manufacturer"] = df_vehicles["manufacturer"].str.title()
     df_vehicles.drop_duplicates(subset="name", keep='first', inplace=True)
+    df_vehicles.sort_values(by="name", inplace=True)
 
     all_vehicles = df_vehicles["name"].unique()
     vehicle_list = [{"label": vehicle, "value": vehicle} for vehicle in all_vehicles]
